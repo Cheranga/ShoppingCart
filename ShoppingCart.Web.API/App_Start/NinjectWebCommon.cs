@@ -73,7 +73,7 @@ namespace ShoppingCart.Web.API.App_Start
             */
 
             var appDependencyResolver = new ShoppingCartDependencyResolver(kernel);
-            DependencyResolver.SetResolver(appDependencyResolver);
+            //DependencyResolver.SetResolver(appDependencyResolver);
             GlobalConfiguration.Configuration.DependencyResolver = appDependencyResolver;
         }        
     }
