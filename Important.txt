@@ -1,0 +1,40 @@
+Dependency resolving for both MVC and Web API
+---------------------------------------------
+1.	http://stackoverflow.com/questions/21158274/using-ninject-dependecyresolver-for-both-mvc-and-webapi
+2.	http://blog.developers.ba/simple-way-share-container-mvc-web-api/
+3.	http://wildermuth.com/2012/02/26/WebAPI_and_Ninject
+
+Deploying Web API
+-----------------
+1.	Remember the app pool need to be in .NET V4 or higher.
+2.	Host the service by "Adding new site".
+3.	If needed give access rights to the application pool.
+
+Removing a directory from GIT
+-----------------------------
+http://stackoverflow.com/questions/1143796/remove-a-file-from-a-git-repository-without-deleting-it-from-the-local-filesyste
+
+git rm --cached -r mydirectory
+
+
+Getting data in JSONP format
+----------------------------
+
+After the service have been deployed it's in a different domain. So need to send the request as a jsonp request.
+
+	The error probably you'll get is
+	--------------------------------
+	“No 'Access-Control-Allow-Origin' header is present on the requested resource” 
+
+
+
+So to get data follow these steps.
+
+1.	First when calling the service from script append "?callback=?" to the end of the URL.
+	(You don't want to specify this if you use $.ajax method with option 'dataType' set to 'jsonp')
+
+http://www.htmlgoodies.com/html5/tutorials/learn-how-to-use-the-jsonp-data-format-with-jquery.html#fbid=AuLxN7ezPqT
+http://api.jquery.com/jquery.getjson/
+
+2.	The API service should support JSONP format as well. So for that install Nuget package (WebApiContrib.Formatting.Jsonp), and add it as a formatter to the web api project.
+http://stackoverflow.com/questions/17336014/net-4-5-asp-net-web-api-jsonp-support

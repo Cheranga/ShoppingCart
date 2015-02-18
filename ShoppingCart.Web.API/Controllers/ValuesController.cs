@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ShoppingCart.Infrastructure.UoW;
+using ShoppingCart.Web.API.Models;
 
 namespace ShoppingCart.Web.API.Controllers
 {
@@ -19,9 +20,15 @@ namespace ShoppingCart.Web.API.Controllers
         }
 
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<TestCustomer> Get()
         {
-            return new string[] { "value1", "value2" };
+            //return new string[] { "value1", "value2" };
+            return new[]
+                   {
+                     new TestCustomer{Id = 1, Name = "Cheranga", Address = "Mt. Waverley"},  
+                     new TestCustomer{Id = 2, Name = "Bodhi", Address = "Mt. Waverley"},
+                     new TestCustomer{Id = 3, Name = "Kenolee", Address = "Mt. Waverley"}
+                   };
         }
 
         // GET api/values/5
