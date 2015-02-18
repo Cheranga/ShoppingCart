@@ -1,3 +1,9 @@
+DI with Ninject for Web API project
+-----------------------------------
+1.	From Nuget install both MVC5 and WebApi2 packages to the project.
+2.	After this modify the "NinjectWebCommon.cs" class to include the dependencies
+	(Or you can write your own custom dependency resolver as in "ShoppingCartDependencyResolver.cs" class)
+
 Dependency resolving for both MVC and Web API
 ---------------------------------------------
 1.	http://stackoverflow.com/questions/21158274/using-ninject-dependecyresolver-for-both-mvc-and-webapi
