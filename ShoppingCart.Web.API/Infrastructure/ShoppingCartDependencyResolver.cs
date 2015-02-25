@@ -5,10 +5,14 @@ using System.Web.Http.Dependencies;
 using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.WebApi;
+using ShoppingCart.Business.Models;
 using ShoppingCart.DAL;
 using ShoppingCart.DAL.Factories;
 using ShoppingCart.DAL.RepositoryProvider;
 using ShoppingCart.DAL.UoW;
+using ShoppingCart.DTO;
+using ShoppingCart.DTO.DTOs;
+using ShoppingCart.DTO.Extensions.Transformations;
 using ShoppingCart.Infrastructure.RepositoryProvider;
 using ShoppingCart.Infrastructure.UoW;
 
@@ -33,6 +37,10 @@ namespace ShoppingCart.Web.API.Infrastructure
         private void RegisterDependencies()
         {
             this.kernel.Bind<IDictionary<Type, Func<DbContext, object>>>().To<Dictionary<Type, Func<DbContext, object>>>();
+            //
+            // Entity Transformers (Singleton scope)
+            //
+            this.kernel.Bind<IEntityTransform<SalesOrderDTO, SalesOrder>>().To<SalesOrderTransformations>().InSingletonScope();
 
             //
             // Create the factory in singleton scope

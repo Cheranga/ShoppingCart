@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ShoppingCart.Business.Models;
 using ShoppingCart.DTO;
+using ShoppingCart.DTO.DTOs;
 
 namespace ShoppingCart.Web.Extensions.ModelExtensions
 {

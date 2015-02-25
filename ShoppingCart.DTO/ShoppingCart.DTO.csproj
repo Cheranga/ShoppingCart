@@ -39,16 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\ModelExtensions\ModelExtensions.cs" />
-    <Compile Include="Extensions\ModelExtensions\SalesOrderExtension.cs" />
+    <Compile Include="Extensions\Transformations\SalesOrderTransformations.cs" />
+    <Compile Include="IEntityTransform.cs" />
+    <Compile Include="IDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SalesOrderDTO.cs" />
+    <Compile Include="DTOs\SalesOrderDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShoppingCart.Business\ShoppingCart.Business.csproj">
       <Project>{D4A02B7D-F9AD-492B-BC7C-7CBC325D5EE3}</Project>
       <Name>ShoppingCart.Business</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\ModelExtensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
-﻿using ShoppingCart.Business.Models;
+﻿using System.Runtime.InteropServices;
+using ShoppingCart.Business.Models;
 
 namespace ShoppingCart.DTO.Extensions.ModelExtensions
 {

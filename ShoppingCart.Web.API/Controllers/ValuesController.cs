@@ -4,31 +4,29 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ShoppingCart.Business.Models;
+using ShoppingCart.DAL;
 using ShoppingCart.Infrastructure.UoW;
 using ShoppingCart.Web.API.Models;
 
 namespace ShoppingCart.Web.API.Controllers
 {
     //[Authorize]
-    public class ValuesController : ApiController
+    public class ValuesController : BaseApiController//ApiController
     {
-        private readonly IUoW uow;
 
-        public ValuesController(IUoW uow)
+        public ValuesController(IUoW uow) : base(uow)
         {
-            this.uow = uow;
         }
 
         // GET api/values
-        public IEnumerable<TestCustomer> Get()
+        public IEnumerable<SalesOrder> Get()
         {
             //return new string[] { "value1", "value2" };
-            return new[]
-                   {
-                     new TestCustomer{Id = 1, Name = "Cheranga", Address = "Mt. Waverley"},  
-                     new TestCustomer{Id = 2, Name = "Bodhi", Address = "Mt. Waverley"},
-                     new TestCustomer{Id = 3, Name = "Kenolee", Address = "Mt. Waverley"}
-                   };
+            var repository  = this.UoW.GetRepository<SalesOrder>();
+            return repository.GetAll().ToList();
+
+            
         }
 
         // GET api/values/5

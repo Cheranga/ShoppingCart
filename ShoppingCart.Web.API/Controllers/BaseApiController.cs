@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using ShoppingCart.Infrastructure.UoW;
 
-namespace ShoppingCart.Web.API.Controllers.Api
+namespace ShoppingCart.Web.API.Controllers
 {
     public class BaseApiController : ApiController
     {
