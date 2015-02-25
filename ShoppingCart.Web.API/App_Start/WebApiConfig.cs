@@ -20,11 +20,30 @@ namespace ShoppingCart.Web.API
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
+            var routes = config.Routes;
+
+            routes.MapHttpRoute(
+               name: "ApiControllerOnly",
+               routeTemplate: "api/{controller}"
+           );
+
+            routes.MapHttpRoute(
+                name: "ApiControllerAndIntegerId",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: null, //defaults: new { id = RouteParameter.Optional } //,
+                constraints: new { id = @"^\d+$" } // id must be all digits
             );
+
+            routes.MapHttpRoute(
+               name: "ApiControllerAction",
+               routeTemplate: "api/{controller}/{action}"
+           );
+
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
         }
     }
 }

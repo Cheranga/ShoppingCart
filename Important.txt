@@ -12,9 +12,16 @@ Dependency resolving for both MVC and Web API
 
 Deploying Web API
 -----------------
+
+**** Deploy the site using VS publish method (Web Deploy) ***
+Check whether if there are any 2 sites or more listening on the same port.
+
+Alternate deployment option -
+
 1.	Remember the app pool need to be in .NET V4 or higher.
 2.	Host the service by "Adding new site".
 3.	If needed give access rights to the application pool.
+https://www.youtube.com/watch?v=-ymjT8C-tHc
 
 Removing a directory from GIT
 -----------------------------

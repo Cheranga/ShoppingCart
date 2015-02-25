@@ -38,8 +38,8 @@
     <script type="text/javascript">
         $(function () {
             $.ajax({
-                url: 'http://localhost/ShoppingCartService/api/values',
-                dataType: 'jsonp'
+                url: 'http://localhost/shocartservice/api/values',
+                dataType: 'json'
             }).done(function (data) {
                     data.forEach(function (item) {
                         console.log(item);

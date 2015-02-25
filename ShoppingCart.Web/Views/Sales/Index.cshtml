@@ -1,0 +1,49 @@
+﻿<div class="row">
+    <div class="col-sm-12">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3">Id</label>
+                <div class="col-sm-9">
+                    <input type="text" data-bind="value:id" />
+                </div>
+            </div>    
+            <div class="form-group">
+                <label class="col-sm-3">Customer Name</label>
+                <div class="col-sm-9">
+                    <input type="text" data-bind="value:customerName" />
+                </div>
+            </div>    
+            <div class="form-group">
+                <label class="col-sm-3">PO Number</label>
+                <div class="col-sm-9">
+                    <input type="text" data-bind="value:pONumber" />
+                </div>
+            </div>    
+        </form>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            //
+            // Create the VM
+            //
+            var vm = new shocart.SalesOrderListViewModel();
+            ko.applyBindings(vm);
+            //
+            // Call the web service, and bind the data
+            //
+            $.ajax({
+                url: 'http://localhost/ShoppingCartService/api/SalesOrderApi',
+                dataType: 'jsonp'
+            }).done(function (data) {
+                data.forEach(function (item) {
+                    console.log(item);
+                });
+            });
+
+        });
+    </script>
+}

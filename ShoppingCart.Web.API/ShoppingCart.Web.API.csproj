@@ -31,6 +31,17 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="shoppingcartdbconnection-Deployment" Order="1">
+          <Destination Path="Data Source=%28localdb%29\v11.0%3bInitial Catalog=ShoppingCartDbContext%3bIntegrated Security=True" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bInitial Catalog=ShoppingCartDbContext%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\shoppingcartdbconnection-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -219,6 +230,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\BaseApiController.cs" />
+    <Compile Include="Controllers\Api\SalesOrderApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -262,6 +275,8 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFile.pubxml" />
     <None Include="Properties\PublishProfiles\Web API.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -274,7 +289,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -302,9 +319,17 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ShoppingCart.Business\ShoppingCart.Business.csproj">
+      <Project>{D4A02B7D-F9AD-492B-BC7C-7CBC325D5EE3}</Project>
+      <Name>ShoppingCart.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShoppingCart.DAL\ShoppingCart.DAL.csproj">
       <Project>{35244C7E-B7B4-4054-B85A-A4153E7A57FA}</Project>
       <Name>ShoppingCart.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.DTO\ShoppingCart.DTO.csproj">
+      <Project>{224D7AF7-D7D4-4AAE-96E6-FD8023A430CE}</Project>
+      <Name>ShoppingCart.DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShoppingCart.Infrastructure\ShoppingCart.Infrastructure.csproj">
       <Project>{81893AA7-8FED-4953-A37A-F62D8C4931E5}</Project>
