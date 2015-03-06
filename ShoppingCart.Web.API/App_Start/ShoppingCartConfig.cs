@@ -23,11 +23,30 @@ namespace ShoppingCart.Web.API.App_Start
             //
             // Add JSONP formatter
             //
-            configuration.Formatters.Add(new JsonpMediaTypeFormatter(new JsonMediaTypeFormatter()));
+            var jsonpFormatter = GetJSONPFormatter();
+            configuration.Formatters.Add(jsonpFormatter);
             //
-            // Have camel casing when converting object properties to JSON
+            // Have camel casing when converting object properties to JSON and JSONP
             //
             configuration.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+        }
+
+        private static MediaTypeFormatter GetJSONPFormatter()
+        {
+            //
+            // create a supported jsonmediatypeformatter with camel casing enabled when serialized
+            //
+            var supportiveJsonFormatter = new JsonMediaTypeFormatter
+                                          {
+                                              SerializerSettings =
+                                              {
+                                                  ContractResolver = new CamelCasePropertyNamesContractResolver()
+                                              }
+                                          };
+
+            var jsonpFormatter = new JsonpMediaTypeFormatter(supportiveJsonFormatter);
+
+            return jsonpFormatter;
         }
     }
 }

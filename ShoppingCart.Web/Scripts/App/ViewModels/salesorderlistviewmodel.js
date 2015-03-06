@@ -4,7 +4,7 @@ shocart.SalesOrderListViewModel = function () {
     var self = this;
 
     //
-    // Originals
+    // Observables
     //
     self.orders = ko.observableArray([]);
 
@@ -12,15 +12,14 @@ shocart.SalesOrderListViewModel = function () {
     // Computed
     //
     self.orderCount = ko.computed(function () {
-        var orders = self.orders();
+        var orders = ko.unwrap(self.orders);
         return orders ? orders.length : 0;
     });
 
     self.haveOrders = ko.computed(function() {
-        var orderCount = self.orderCount();
+        var orderCount = ko.unwrap(self.orderCount);
         return orderCount > 0;
     });
-
     //
     // Functions
     //
@@ -29,8 +28,6 @@ shocart.SalesOrderListViewModel = function () {
             self.orders.push(salesOrder);
         }
     };
-
-
     //
     // API
     //

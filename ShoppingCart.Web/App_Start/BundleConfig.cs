@@ -23,6 +23,17 @@ namespace ShoppingCart.Web
                       "~/Scripts/Lib/bootstrap.js",
                       "~/Scripts/Lib/respond.js"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/shocartgeneral").Include(
+                        "~/Scripts/Lib/jquery-{version}.js",
+                        "~/Scripts/Lib/jquery.validate.js",
+                        "~/Scripts/Lib/bootstrap.js",
+                        "~/Scripts/Lib/respond.js",
+                        "~/Scripts/Lib/knockout-{version}.js",
+                        "~/Scripts/Lib/knockout.mapping-latest.js"
+                        ));
+
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

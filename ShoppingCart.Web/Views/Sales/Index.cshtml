@@ -1,47 +1,55 @@
 ﻿<div class="row">
     <div class="col-sm-12">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="col-sm-3">Id</label>
-                <div class="col-sm-9">
-                    <input type="text" data-bind="value:id" />
-                </div>
-            </div>    
-            <div class="form-group">
-                <label class="col-sm-3">Customer Name</label>
-                <div class="col-sm-9">
-                    <input type="text" data-bind="value:customerName" />
-                </div>
-            </div>    
-            <div class="form-group">
-                <label class="col-sm-3">PO Number</label>
-                <div class="col-sm-9">
-                    <input type="text" data-bind="value:pONumber" />
-                </div>
-            </div>    
-        </form>
+        <table class="table table-bordered table-condensed table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="col-sm-2"><span class="text-capitalize">name</span></th>
+                    <th class="col-sm-1"><span class="text-capitalize">PO number</span></th>
+                    <th class="col-sm-9"><span class="text-capitalize">comments</span></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:orders">
+                <tr>
+                    <td class="col-sm-2"><span data-bind="text:customerName"></span></td>
+                    <td class="col-sm-1"><span data-bind="text:poNumber"></span></td>
+                    <td class="col-sm-9"><span data-bind="text:statusMessage"></span></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
 @section scripts
 {
+    <script src="~/Scripts/App/ViewModels/salesorderlistviewmodel.js"></script>
+
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             //
             // Create the VM
             //
-            var vm = new shocart.SalesOrderListViewModel();
-            ko.applyBindings(vm);
+            //var vm = new shocart.SalesOrderListViewModel();
+            //ko.applyBindings(vm);
             //
             // Call the web service, and bind the data
             //
             $.ajax({
-                url: 'http://localhost/ShoppingCartService/api/SalesOrderApi',
+                url: 'http://localhost/ShoCartService/api/salesorderapi',
                 dataType: 'jsonp'
             }).done(function (data) {
-                data.forEach(function (item) {
-                    console.log(item);
-                });
+                //
+                // Rebind the view model
+                //
+                var transformedSalesOrders = ko.mapping.fromJS(data);
+                var vm = new shocart.SalesOrderListViewModel();
+                vm.orders(transformedSalesOrders());
+                
+                ko.applyBindings(vm);
+                //ko.mapping.fromJS(data, vm);
+
+                //data.forEach(function (item) {
+                //    console.log(item);
+                //});
             });
 
         });
