@@ -36,6 +36,7 @@ namespace ShoppingCart.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-theme-paper.css",
                       "~/Content/site.css"));
         }
     }
