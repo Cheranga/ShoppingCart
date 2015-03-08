@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/Lib/require.js"></script>
 
 </head>
 <body>
@@ -39,7 +40,13 @@
 
     @*@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")*@
-    @Scripts.Render("~/bundles/shocartgeneral")
+    @*@Scripts.Render("~/bundles/shocartgeneral")*@
+    
+    @*<script src="~/Scripts/Lib/require.js"></script>*@
+    <script src="~/Scripts/dependencies.js"></script> 
+
+    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

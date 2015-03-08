@@ -36,20 +36,20 @@
 @section scripts
 {
     <script type="text/javascript">
-        $(function () {
-            $.ajax({
-                url: 'http://localhost/shocartservice/api/values',
-                dataType: 'json'
-            }).done(function (data) {
-                    data.forEach(function (item) {
-                        console.log(item);
-                    });
-            });
-            //$.getJSON('http://localhost/ShoppingCartService/api/values?callback=?', null, function (data) {
-            //    data.forEach(function (item) {
-            //        console.log(item);
-            //    });
-            //});
-        })
+        
+        require(['App/Views/Home/index'], function () {
+
+        });
+
+        //$(function () {
+        //    $.ajax({
+        //        url: 'http://localhost/shocartservice/api/values',
+        //        dataType: 'json'
+        //    }).done(function (data) {
+        //            data.forEach(function (item) {
+        //                console.log(item);
+        //            });
+        //    });
+        //})
     </script>
 }
