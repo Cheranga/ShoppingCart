@@ -203,6 +203,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\App\app.js" />
+    <Content Include="Scripts\App\Util\util.js" />
     <Content Include="Scripts\dependencies.js" />
     <Content Include="Scripts\App\Models\salesorder.js" />
     <Content Include="Scripts\App\ViewModels\salesorderlistviewmodel.js" />
@@ -296,6 +298,10 @@
     <ProjectReference Include="..\ShoppingCart.DTO\ShoppingCart.DTO.csproj">
       <Project>{224D7AF7-D7D4-4AAE-96E6-FD8023A430CE}</Project>
       <Name>ShoppingCart.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.Infrastructure\ShoppingCart.Infrastructure.csproj">
+      <Project>{81893AA7-8FED-4953-A37A-F62D8C4931E5}</Project>
+      <Name>ShoppingCart.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

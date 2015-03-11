@@ -15,6 +15,10 @@ namespace ShoppingCart.DAL.EntityConfigurations
             this.HasKey(x => x.Id);
             this.Property(x => x.CustomerName).IsRequired().HasMaxLength(100);
             this.Property(x => x.PONumber).IsRequired().HasMaxLength(10);
+            //
+            // Ignore the object state property, since it's used only in application level to correctly identify and set the entity state
+            //
+            this.Ignore(x => x.ObjectState);
         }
     }
 }

@@ -7,8 +7,5 @@ namespace ShoppingCart.DTO
     {
         Expression<Func<T, U>> ToModel { get; }
         Expression<Func<U, T>> ToDTO { get; }
-        //T ToModel<T, U>(U dto);
-
-        //T ToDTO<T, U>(U model);
     }
 }

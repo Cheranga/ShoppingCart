@@ -18,10 +18,6 @@ namespace ShoppingCart.DTO.Extensions.Transformations
                                             PONumber = salesOrderDto.PONumber
                                         };
             }
-            set
-            {
-                
-            }
         }
         public Expression<Func<SalesOrder,SalesOrderDTO>> ToDTO
         {
@@ -34,11 +30,6 @@ namespace ShoppingCart.DTO.Extensions.Transformations
                                          PONumber = salesOrder.PONumber
                                      };
             }
-            set
-            {
-                
-            }
-            
         }
     }
 }
