@@ -13,7 +13,7 @@
                 <tr>
                     <td class="col-sm-2"><span data-bind="text:customerName"></span></td>
                     <td class="col-sm-1"><span data-bind="text:poNumber"></span></td>
-                    <td class="col-sm-9"><span data-bind="text:statusMessage"></span></td>
+                    <td class="col-sm-9"><span></span></td>
                 </tr>
             </tbody>
         </table>
@@ -22,37 +22,44 @@
 
 @section scripts
 {
-    <script src="~/Scripts/App/ViewModels/salesorderlistviewmodel.js"></script>
 
     <script type="text/javascript">
-        $(function () {
-            //
-            // Create the VM
-            //
-            //var vm = new shocart.SalesOrderListViewModel();
-            //ko.applyBindings(vm);
-            //
-            // Call the web service, and bind the data
-            //
-            $.ajax({
-                url: 'http://localhost/ShoCartService/api/salesorderapi',
-                dataType: 'jsonp'
-            }).done(function (data,a,b,c) {
-                //
-                // Rebind the view model
-                //
-                var transformedSalesOrders = ko.mapping.fromJS(data);
-                var vm = new shocart.SalesOrderListViewModel();
-                vm.orders(transformedSalesOrders());
-                
-                ko.applyBindings(vm);
-                //ko.mapping.fromJS(data, vm);
-
-                //data.forEach(function (item) {
-                //    console.log(item);
-                //});
-            });
+        require(['App/Views/Sales/index'], function () {
 
         });
     </script>
+
+    @*<script src="~/Scripts/App/ViewModels/salesorderlistviewmodel.js"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                //
+                // Create the VM
+                //
+                //var vm = new shocart.SalesOrderListViewModel();
+                //ko.applyBindings(vm);
+                //
+                // Call the web service, and bind the data
+                //
+                $.ajax({
+                    url: 'http://localhost/ShoCartService/api/salesorderapi',
+                    dataType: 'jsonp'
+                }).done(function (data,a,b,c) {
+                    //
+                    // Rebind the view model
+                    //
+                    var transformedSalesOrders = ko.mapping.fromJS(data);
+                    var vm = new shocart.SalesOrderListViewModel();
+                    vm.orders(transformedSalesOrders());
+
+                    ko.applyBindings(vm);
+                    //ko.mapping.fromJS(data, vm);
+
+                    //data.forEach(function (item) {
+                    //    console.log(item);
+                    //});
+                });
+
+            });
+        </script>*@
 }

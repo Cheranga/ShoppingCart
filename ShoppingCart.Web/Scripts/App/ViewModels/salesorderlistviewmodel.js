@@ -40,29 +40,65 @@
 //};
 
 
-define('App/ViewModels/salesorderlistviewmodel', ['jquery', 'knockout', 'komapping', 'App/Models/salesorder'], function ($,ko, kom, salesOrder) {
-    
+define('App/ViewModels/salesorderlistviewmodel', ['jquery', 'knockout', 'komapping', 'App/Models/salesorder', 'App/Util/util'], function ($, ko, kom, salesOrder, util) {
+
     var self = this;
 
     self.SalesOrderListViewModel = function () {
         var vm = this;
 
+        //
+        // Observables
+        //
         vm.salesOrders = ko.observableArray([]);
 
-        vm.currentSalesOrderCount = ko.computed(function() {
-            var length = ko.unwrap(self.salesOrders).length;
+        //
+        // Computed observables
+        //
+        vm.currentSalesOrderCount = ko.computed(function () {
+            var length = ko.unwrap(vm.salesOrders).length;
             return length;
         });
 
-        vm.getSalesOrders = function (page, pageSize) {
-            //
-            // First check whether we have the requested sales orders in the list
-            //
-            var curCount = ko.unwrap(vm.currentSalesOrderCount);
-            var reqData = page * pageSize;
+        //
+        // Functions
+        //
+        vm.salesOrdersReceived = function (data, textStatus, jqxhr) {
+            if (data) {
+                //
+                // To get the observable array, need to call the method
+                //
+                var transformedSalesOrders = kom.fromJS(data)();
+                //
+                // After getting the observable array, set the orders
+                //
+                vm.salesOrders(transformedSalesOrders);
+            }
+        };
+        vm.getSalesOrders = function () {
+            var options = {
+                url: "http://localhost/ShoCartService/api/values",
+                callback:vm.salesOrdersReceived
+            };
 
+            util.DataApi.callService(options);
         };
 
+        //
+        // Behaviours
+        //
+
+        //
+        // API
+        //
+        return {
+            orders: vm.salesOrders,
+            getSalesOrders:vm.getSalesOrders
+        };
+    };
+
+    return {
+        ViewModel: self.SalesOrderListViewModel
     };
 
 });

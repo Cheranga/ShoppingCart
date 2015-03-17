@@ -204,7 +204,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\App\app.js" />
+    <Content Include="Scripts\App\Util\logger.js" />
     <Content Include="Scripts\App\Util\util.js" />
+    <Content Include="Scripts\App\Views\Sales\index.js" />
     <Content Include="Scripts\dependencies.js" />
     <Content Include="Scripts\App\Models\salesorder.js" />
     <Content Include="Scripts\App\ViewModels\salesorderlistviewmodel.js" />
